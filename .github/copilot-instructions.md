@@ -7,10 +7,11 @@ Always reference these instructions first and fallback to search or bash command
 **This is a static web application** - no build process, frameworks, or complex setup required.
 
 ### Quick Start & Validation
-- Serve the application: `python3 -m http.server 8000`
-- Open browser to: `http://localhost:8000`
+- Serve the application: `npx serve .`
+- Open browser to: `http://localhost:3000` (or port shown by serve)
 - **EXPECTED**: Site loads in ~2 seconds showing 1200+ Nintendo 3DS games
 - **NEVER CANCEL**: Application starts immediately. Data loads in 2-3 seconds.
+- **IMPORTANT**: Always close the server before modifying code files
 
 ### Core Validation Workflow
 Always test these scenarios after making changes:
@@ -32,16 +33,25 @@ Always test these scenarios after making changes:
 
 ## Development Workflow
 
+### Server Management Protocol
+- **Start Server**: `npx serve .` (typically serves on port 3000)
+- **Stop Server**: Always use Ctrl+C or stop the bash session before code changes
+- **CRITICAL**: Never modify code files while server is running
+- **Restart Process**: Stop server → Make changes → Start server → Test
+
 ### Serving the Application
-- **Primary**: `python3 -m http.server 8000` (starts in <1 second)
-- **Alternative**: `npx serve .` or any static file server
+- **Primary**: `npx serve .` (starts in <1 second)
+- **Alternative**: `python3 -m http.server 8000` or any static file server
 - **NO BUILD REQUIRED**: Pure HTML/CSS/JS - edit and refresh
+- **IMPORTANT**: Always close the server before modifying code files
 
 ### Testing Changes
-1. Make code changes to HTML/CSS/JS files
-2. Refresh browser (Ctrl+F5 for hard refresh)
-3. **ALWAYS TEST**: Run complete validation workflow above
-4. Verify in browser console for JavaScript errors
+1. Close the webserver if it's running
+2. Make code changes to HTML/CSS/JS files
+3. Start the webserver again with `npx serve .`
+4. Refresh browser (Ctrl+F5 for hard refresh)
+5. **ALWAYS TEST**: Run complete validation workflow above
+6. Verify in browser console for JavaScript errors
 
 ### Code Architecture
 - **No frameworks**: Pure vanilla JavaScript ES6+
