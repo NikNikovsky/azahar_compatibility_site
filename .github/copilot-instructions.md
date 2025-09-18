@@ -8,6 +8,7 @@ Always reference these instructions first and fallback to search or bash command
 
 You should log the progress or any errors as replies
 ### Quick Start & Validation
+- Install dependencies (dev env and npx)
 - Make sure there's no npx or other HTTP servers running
 - Serve the application: `npx serve .`
 - Open browser to: `http://localhost:3000` (or port shown by serve)
