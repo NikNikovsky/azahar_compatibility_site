@@ -7,8 +7,13 @@ A web application that displays the Nintendo 3DS game compatibility database for
 - **Live Data**: Fetches the latest compatibility data directly from the [official azahar-emu repository](https://github.com/azahar-emu/compatibility-list)
 - **Search Functionality**: Search games by title or game ID
 - **Compatibility Filtering**: Filter games by compatibility status:
-   - 99 means untested
-   - 5 is bad, 0 is the best 
+   - 0: Perfect – Game works flawlessly
+   - 1: Playable – Game works with minor issues
+   - 2: Runs – Game runs but with noticeable issues
+   - 3: Loads – Game loads but is not playable
+   - 4: Boots – Game boots but does not load properly
+   - 5: Broken – Game does not work
+   - 99: Untested – Game has not been tested yet
 - **Clean Interface**: Modern, responsive design that works on desktop and mobile
 - **Real-time Results**: Shows the number of games found based on current filters
 
