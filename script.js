@@ -145,7 +145,7 @@ class CompatibilityList {
             const compatibilityClass = this.getCompatibilityClass(game.compatibility);
             const compatibilityText = this.getCompatibilityText(game.compatibility);
             const gameId = game.releases && game.releases.length > 0 ? game.releases[0].id : 'N/A';
-            const githubSearchUrl = `https://github.com/azahar-emu/azahar/issues?q=is%3Aissue+${encodeURIComponent(game.title)}`;
+            const githubSearchUrl = `https://github.com/azahar-emu/compatibility-list/issues?q=is%3Aissue+${encodeURIComponent(game.title)}`;
             
             return `
                 <div class="game-item compatibility-${compatibilityClass}">
