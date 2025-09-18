@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azahar Compatibility List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Azahar Compatibility List</h1>
+            <p>Search through the compatibility database for Nintendo 3DS games on the Azahar emulator</p>
+        </header>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for games..." autocomplete="off">
+            <div class="search-stats">
+                <span id="gameCount">Loading...</span> games found
+            </div>
+        </div>
+
+        <div class="filters">
+            <label>
+                <input type="checkbox" id="filterPlayable" checked>
+                Show Playable (99-100%)
+            </label>
+            <label>
+                <input type="checkbox" id="filterPartial" checked>
+                Show Partially Playable (50-98%)
+            </label>
+            <label>
+                <input type="checkbox" id="filterUnplayable" checked>
+                Show Unplayable (0-49%)
+            </label>
+        </div>
+
+        <div class="loading" id="loadingMessage">
+            <p>Loading compatibility data...</p>
+        </div>
+
+        <div class="error" id="errorMessage" style="display: none;">
+            <p>Failed to load compatibility data. Please try again later.</p>
+        </div>
+
+        <div class="game-list" id="gameList">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
