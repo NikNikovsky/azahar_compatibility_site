@@ -147,7 +147,7 @@ class CompatibilityList {
             const gameId = game.releases && game.releases.length > 0 ? game.releases[0].id : 'N/A';
             
             return `
-                <div class="game-item">
+                <div class="game-item compatibility-${compatibilityClass}">
                     <div class="game-info">
                         <h3>${this.escapeHtml(game.title)}</h3>
                         <div class="game-id">ID: ${gameId}</div>
