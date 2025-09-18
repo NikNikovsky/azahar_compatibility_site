@@ -7,6 +7,7 @@ Always reference these instructions first and fallback to search or bash command
 **This is a static web application** - no build process, frameworks, or complex setup required.
 
 ### Quick Start & Validation
+- Make sure there's no npx or other HTTP servers running
 - Serve the application: `npx serve .`
 - Open browser to: `http://localhost:3000` (or port shown by serve)
 - **EXPECTED**: Site loads in ~2 seconds showing 1200+ Nintendo 3DS games
@@ -35,6 +36,7 @@ Always test these scenarios after making changes:
 
 ### Server Management Protocol
 - **Start Server**: `npx serve .` (typically serves on port 3000)
+- If port 3000 is taken, check and kill the process using it
 - **Stop Server**: Always use Ctrl+C or stop the bash session before code changes
 - **CRITICAL**: Never modify code files while server is running
 - **Restart Process**: Stop server → Make changes → Start server → Test
@@ -102,12 +104,15 @@ Always test these scenarios after making changes:
 - Do NOT add frameworks (React, Vue, etc.) - uses vanilla JS  
 - Do NOT modify the JSON structure - matches upstream format
 - Do NOT remove fallback mechanisms - ensures reliability
+- Do NOT start another server if one is occupying the port
+- Do NOT comment with the same thing again 
 
 ### Common Issues & Solutions
 - **Site won't load**: Check if running on HTTP server (not file://)
 - **No games showing**: Check browser console, might be CORS or JSON error
 - **Search not working**: Verify JavaScript not blocked, check console
 - **Styling broken**: Hard refresh (Ctrl+F5) to clear CSS cache
+- **Port taken**: Investigate and kill the process holding the port hostage 
 
 ### Performance Characteristics
 - **File sizes**: HTML(4KB), CSS(4KB), JS(8KB), JSON(204KB)
