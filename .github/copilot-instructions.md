@@ -6,6 +6,7 @@ Always reference these instructions first and fallback to search or bash command
 
 **This is a static web application** - no build process, frameworks, or complex setup required.
 
+You should log the progress or any errors as replies
 ### Quick Start & Validation
 - Make sure there's no npx or other HTTP servers running
 - Serve the application: `npx serve .`
