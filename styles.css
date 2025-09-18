@@ -117,6 +117,22 @@ header p {
     align-items: center;
 }
 
+.game-item.compatibility-perfect {
+    background-color: #27ae60;
+}
+
+.game-item.compatibility-playable {
+    background-color: #f39c12;
+}
+
+.game-item.compatibility-unplayable {
+    background-color: #e74c3c;
+}
+
+.game-item.compatibility-untested {
+    background-color: #95a5a6;
+}
+
 .game-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
@@ -132,6 +148,21 @@ header p {
     color: #7f8c8d;
     font-size: 0.9em;
     font-family: monospace;
+}
+
+/* Text color overrides for colored backgrounds */
+.game-item.compatibility-perfect .game-info h3,
+.game-item.compatibility-playable .game-info h3,
+.game-item.compatibility-unplayable .game-info h3,
+.game-item.compatibility-untested .game-info h3 {
+    color: white;
+}
+
+.game-item.compatibility-perfect .game-info .game-id,
+.game-item.compatibility-playable .game-info .game-id,
+.game-item.compatibility-unplayable .game-info .game-id,
+.game-item.compatibility-untested .game-info .game-id {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .compatibility-badge {
