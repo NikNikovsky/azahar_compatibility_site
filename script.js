@@ -14,9 +14,27 @@ class CompatibilityList {
     }
     
     async init() {
+        this.initTheme();
         await this.loadCompatibilityData();
         this.setupEventListeners();
         this.renderGames();
+    }
+    
+    initTheme() {
+        // Load saved theme from localStorage or default to light
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        this.setTheme(savedTheme);
+        
+        // Set the select value
+        const themeSelect = document.getElementById('themeSelect');
+        if (themeSelect) {
+            themeSelect.value = savedTheme;
+        }
+    }
+    
+    setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
     }
     
     async loadCompatibilityData() {
@@ -56,6 +74,7 @@ class CompatibilityList {
         const filterPlayable = document.getElementById('filterPlayable');
         const filterUnplayable = document.getElementById('filterUnplayable');
         const filterUntested = document.getElementById('filterUntested');
+        const themeSelect = document.getElementById('themeSelect');
         
         searchInput.addEventListener('input', (e) => {
             this.searchTerm = e.target.value.toLowerCase();
@@ -80,6 +99,10 @@ class CompatibilityList {
         filterUntested.addEventListener('change', (e) => {
             this.filters.untested = e.target.checked;
             this.applyFilters();
+        });
+        
+        themeSelect.addEventListener('change', (e) => {
+            this.setTheme(e.target.value);
         });
     }
     
