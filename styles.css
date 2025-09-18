@@ -165,6 +165,37 @@ header p {
     color: rgba(255, 255, 255, 0.8);
 }
 
+.game-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+.github-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: scale(1.1);
+}
+
+.github-link svg {
+    width: 16px;
+    height: 16px;
+}
+
 .compatibility-badge {
     padding: 8px 16px;
     border-radius: 20px;
