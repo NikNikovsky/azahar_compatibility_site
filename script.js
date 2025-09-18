@@ -145,6 +145,7 @@ class CompatibilityList {
             const compatibilityClass = this.getCompatibilityClass(game.compatibility);
             const compatibilityText = this.getCompatibilityText(game.compatibility);
             const gameId = game.releases && game.releases.length > 0 ? game.releases[0].id : 'N/A';
+            const githubSearchUrl = `https://github.com/azahar-emu/azahar/issues?q=is%3Aissue+${encodeURIComponent(game.title)}`;
             
             return `
                 <div class="game-item compatibility-${compatibilityClass}">
@@ -152,8 +153,15 @@ class CompatibilityList {
                         <h3>${this.escapeHtml(game.title)}</h3>
                         <div class="game-id">ID: ${gameId}</div>
                     </div>
-                    <div class="compatibility-badge compatibility-${compatibilityClass}">
-                        ${compatibilityText} (${game.compatibility})
+                    <div class="game-actions">
+                        <a href="${githubSearchUrl}" target="_blank" rel="noopener noreferrer" class="github-link" title="Search for issues about this game">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                        </a>
+                        <div class="compatibility-badge compatibility-${compatibilityClass}">
+                            ${compatibilityText} (${game.compatibility})
+                        </div>
                     </div>
                 </div>
             `;
