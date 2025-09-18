@@ -4,9 +4,10 @@ class CompatibilityList {
         this.filteredGames = [];
         this.searchTerm = '';
         this.filters = {
+            perfect: true,
             playable: true,
-            partial: true,
-            unplayable: true
+            unplayable: true,
+            untested: true
         };
         
         this.init();
@@ -51,12 +52,18 @@ class CompatibilityList {
     
     setupEventListeners() {
         const searchInput = document.getElementById('searchInput');
+        const filterPerfect = document.getElementById('filterPerfect');
         const filterPlayable = document.getElementById('filterPlayable');
-        const filterPartial = document.getElementById('filterPartial');
         const filterUnplayable = document.getElementById('filterUnplayable');
+        const filterUntested = document.getElementById('filterUntested');
         
         searchInput.addEventListener('input', (e) => {
             this.searchTerm = e.target.value.toLowerCase();
+            this.applyFilters();
+        });
+        
+        filterPerfect.addEventListener('change', (e) => {
+            this.filters.perfect = e.target.checked;
             this.applyFilters();
         });
         
@@ -65,13 +72,13 @@ class CompatibilityList {
             this.applyFilters();
         });
         
-        filterPartial.addEventListener('change', (e) => {
-            this.filters.partial = e.target.checked;
+        filterUnplayable.addEventListener('change', (e) => {
+            this.filters.unplayable = e.target.checked;
             this.applyFilters();
         });
         
-        filterUnplayable.addEventListener('change', (e) => {
-            this.filters.unplayable = e.target.checked;
+        filterUntested.addEventListener('change', (e) => {
+            this.filters.untested = e.target.checked;
             this.applyFilters();
         });
     }
@@ -87,10 +94,12 @@ class CompatibilityList {
             
             // Compatibility filter
             const compatibility = game.compatibility;
+            const compatibilityClass = this.getCompatibilityClass(compatibility);
             const matchesCompatibility = 
-                (this.filters.playable && compatibility >= 99) ||
-                (this.filters.partial && compatibility >= 50 && compatibility < 99) ||
-                (this.filters.unplayable && compatibility < 50);
+                (this.filters.perfect && compatibilityClass === 'perfect') ||
+                (this.filters.playable && compatibilityClass === 'playable') ||
+                (this.filters.unplayable && compatibilityClass === 'unplayable') ||
+                (this.filters.untested && compatibilityClass === 'untested');
             
             return matchesSearch && matchesCompatibility;
         });
@@ -99,15 +108,21 @@ class CompatibilityList {
     }
     
     getCompatibilityClass(compatibility) {
-        if (compatibility >= 99) return 'playable';
-        if (compatibility >= 50) return 'partial';
+        if (compatibility === 99) return 'untested';
+        if (compatibility <= 1) return 'perfect';
+        if (compatibility <= 3) return 'playable';
         return 'unplayable';
     }
     
     getCompatibilityText(compatibility) {
-        if (compatibility >= 99) return 'Playable';
-        if (compatibility >= 50) return 'Partial';
-        return 'Unplayable';
+        if (compatibility === 99) return 'Untested';
+        if (compatibility === 0) return 'Perfect';
+        if (compatibility === 1) return 'Great';
+        if (compatibility === 2) return 'Good';
+        if (compatibility === 3) return 'OK';
+        if (compatibility === 4) return 'Poor';
+        if (compatibility === 5) return 'Bad';
+        return 'Unknown';
     }
     
     renderGames() {
@@ -138,7 +153,7 @@ class CompatibilityList {
                         <div class="game-id">ID: ${gameId}</div>
                     </div>
                     <div class="compatibility-badge compatibility-${compatibilityClass}">
-                        ${compatibilityText} (${game.compatibility}%)
+                        ${compatibilityText} (${game.compatibility})
                     </div>
                 </div>
             `;
