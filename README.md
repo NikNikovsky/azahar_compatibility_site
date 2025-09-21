@@ -1,3 +1,5 @@
+ **THIS IS NOT AN OFFICIAL AZAHAR TOOL** (unless they want to make it offical)
+
 # Azahar Compatibility Site
 
 A web application that displays the Nintendo 3DS game compatibility database for the Azahar emulator. This site provides an easy-to-use interface for searching and filtering games based on their compatibility status.
